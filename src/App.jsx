@@ -6,11 +6,6 @@ import { fetchData } from "./api/";
 import image from "./assets/images/image.png";
 
 const App = () => {
-  // state = {
-  //   data: {},
-  //   country: '',
-  // }
-
   const [data, setData] = React.useState({});
   const [country, setCountry] = React.useState("");
 
