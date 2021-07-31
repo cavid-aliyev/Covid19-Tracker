@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Cards, CountryPicker, Chart } from "./Components";
+import { Carts, CountriesOptions, Chart } from "./Components";
 import { fetchData } from "./api/";
 
 import image from "./assets/images/image.png";
@@ -9,13 +9,14 @@ const App = () => {
   const [data, setData] = React.useState({});
   const [country, setCountry] = React.useState("");
 
-
-
   //bug
-  React.useEffect(async () => {
-    const data = await fetchData();
+  React.useEffect(() => {
+    const fetchCovid = async () => {
+      const data = await fetchData();
+      setData({ data });
+    };
 
-    setData({ data });
+    fetchCovid();
   });
 
   const handleCountryChange = async (country) => {
@@ -27,8 +28,8 @@ const App = () => {
   return (
     <div className="container">
       <img className="image" src={image} alt="COVID-19" />
-      <Cards data={data} />
-      <CountryPicker handleCountryChange={handleCountryChange} />
+      <Carts data={data} />
+      <CountriesOptions handleCountryChange={handleCountryChange} />
       <Chart data={data} country={country} />
     </div>
   );
